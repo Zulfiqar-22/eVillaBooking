@@ -1,7 +1,17 @@
+using eVillaBooking.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<ApplicationDbContext>(opt =>
+{
+	string Connectionstring = builder.Configuration.GetValue<string>("MyConnectionStrings:Dbconnection")!;
+
+	opt.UseSqlServer(Connectionstring);
+}
+);
 
 var app = builder.Build();
 
