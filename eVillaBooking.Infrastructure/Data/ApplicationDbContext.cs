@@ -9,12 +9,12 @@ namespace eVillaBooking.Infrastructure.Data
         {
             
         }
-		public DbSet<Villa> villa { get; set; }
+		public DbSet<Villas> villa { get; set; }
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			var seedData = new List<Villa>()
+			var seedData = new List<Villas>()
 {
-                                  new Villa(){
+                                  new Villas(){
                                               Id = 1,
                                               Name = "Royal Villa",
                                               Description = "Fusce 11 tincidunt maximus leo, sed scelerisque massa auctor sit amet. Donec ex mauris, hendrerit quis nibh ac, efficitur fringilla enim.",
@@ -23,7 +23,7 @@ namespace eVillaBooking.Infrastructure.Data
                                               Price = 200,
                                               Sqft = 550,
                                           },
-                                        new Villa()
+                                        new Villas()
                                         {
                                             Id = 2,
                                             Name = "Premium Pool Villa",
@@ -33,7 +33,7 @@ namespace eVillaBooking.Infrastructure.Data
                                             Price = 300,
                                             Sqft = 550,
                                         },
-                                        new Villa()
+                                        new Villas()
                                         {
                                             Id = 3,
                                             Name = "Luxury Pool Villa",
@@ -44,7 +44,7 @@ namespace eVillaBooking.Infrastructure.Data
                                             Sqft = 750,
                                         }
 };
-			modelBuilder.Entity<Villa>().HasData(seedData);
+			modelBuilder.Entity<Villas>().HasData(seedData);
 		}
 
 
