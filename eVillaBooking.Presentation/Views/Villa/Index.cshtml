@@ -26,6 +26,7 @@
 							<th>Price</th>
 							<th>Square Feet</th>
 							<th>Occupancy</th>
+							<th>Action</th>
                           </tr>
 
                    </thead>
@@ -37,6 +38,10 @@
 						<td>@villa.Price</td>
 						<td>@villa.Sqft</td>
 						<td>@villa.Occupancy</td>
+						<td>
+							<a class="btn btn-primary" asp-action="edit" asp-controller="villa" asp-route-id="@villa.Id">Edit</a>
+							<a class="btn btn-danger" asp-action="Delete" asp-controller="villa" asp-route-id="@villa.Id">Delete</a>
+						</td>
 					</tr>
 						
 

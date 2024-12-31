@@ -1,19 +1,19 @@
 ﻿@using eVillaBooking.Domain.Entity;
 @model Villas
 
-<div asp-validation-summary="All"></div>
+
 <div class="row">
 	<div class="w-100 card">
 
 		<div class="card-header bg-success bg-gradient text-center m-3">
-			<h2>Create New List</h2>
+			<h2>Edit Record List</h2>
 		</div>
 
 
 		<div class="card-body">
-			<form asp-action="create" asp-controller="villa" method="post">
+			<form asp-action="Edit" asp-controller="villa" method="post">
 				<div class="form-floating m-2">
-					<input type="text" asp-for="Name" class="form-control" placeholder=""/>
+					<input type="text" asp-for="Name" class="form-control" placeholder="" />
 					<label asp-for="Name"></label>
 					<span class="text-danger" asp-validation-for="Name"></span>
 				</div>
@@ -49,15 +49,10 @@
 				</div>
 
 			</form>
-			
+
 		</div>
 
 	</div>
 
 </div>
-@section Scripts{
-	@{
-		await Html.RenderPartialAsync("_ValidationScriptsPartial");
-	}
 
-}
