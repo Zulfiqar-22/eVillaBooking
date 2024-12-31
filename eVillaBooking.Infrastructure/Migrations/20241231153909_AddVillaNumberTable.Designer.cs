@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eVillaBooking.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using eVillaBooking.Infrastructure.Data;
 namespace eVillaBooking.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241231153909_AddVillaNumberTable")]
+    partial class AddVillaNumberTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,6 +31,7 @@ namespace eVillaBooking.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("SpecialDetails")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Villa_id")
@@ -38,23 +42,6 @@ namespace eVillaBooking.Infrastructure.Migrations
                     b.HasIndex("Villa_id");
 
                     b.ToTable("VillaNumbers");
-
-                    b.HasData(
-                        new
-                        {
-                            Vill_Number = 101,
-                            Villa_id = 1
-                        },
-                        new
-                        {
-                            Vill_Number = 202,
-                            Villa_id = 2
-                        },
-                        new
-                        {
-                            Vill_Number = 303,
-                            Villa_id = 3
-                        });
                 });
 
             modelBuilder.Entity("eVillaBooking.Domain.Entity.Villas", b =>
