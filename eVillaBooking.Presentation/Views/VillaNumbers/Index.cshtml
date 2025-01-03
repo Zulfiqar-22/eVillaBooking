@@ -9,7 +9,7 @@
 
 		<div class="card-body">
 			<div class="text-end m-2">
-				<a asp-action="create" asp-controller="villanumber" class="btn btn-danger">
+				<a asp-action="create" asp-controller="villanumbers" class="btn btn-danger">
 					<i class="bi bi-plus-circle-fill"></i>Add Villa Number
 				</a>
 			</div>
@@ -31,12 +31,12 @@
 					@foreach (var villaNumber in Model)
 					{
 						<tr>
-							<td>@villaNumber.Vill_Number</td>
+							<td>@villaNumber.Villa_Number</td>
 							<td>@villaNumber.SpecialDetails</td>
 							<td>@villaNumber.Villas.Name</td>
 							<td>
-								<a class="btn btn-primary" asp-action="Edit" asp-controller="VillaNumber" asp-route-id="@villaNumber.Vill_Number">Edit</a>
-								<a class="btn btn-danger" asp-action="Delete" asp-controller="VillaNumber" asp-route-id="@villaNumber.Vill_Number">Delete</a>
+								<a class="btn btn-primary" asp-action="Edit" asp-controller="VillaNumbers" asp-route-id="@villaNumber.Villa_Number">Edit</a>
+								<a class="btn btn-danger" asp-action="Delete" asp-controller="VillaNumber" asp-route-id="@villaNumber.Villa_Number">Delete</a>
 							</td>
 
 

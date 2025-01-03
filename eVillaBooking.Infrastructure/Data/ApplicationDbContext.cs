@@ -49,9 +49,9 @@ namespace eVillaBooking.Infrastructure.Data
 
 			modelBuilder.Entity<VillaNumber>().HasData(
 
-				new VillaNumber { Villa_id = 1, Vill_Number = 101 },
-				new VillaNumber { Villa_id = 2, Vill_Number = 202 },
-				new VillaNumber { Villa_id = 3, Vill_Number = 303 });
+				new VillaNumber { Villa_id = 1, Villa_Number = 101 },
+				new VillaNumber { Villa_id = 2, Villa_Number = 202 },
+				new VillaNumber { Villa_id = 3, Villa_Number = 303 });
 		
 		
 		

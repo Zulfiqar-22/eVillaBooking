@@ -11,9 +11,9 @@
 
 
 		<div class="card-body">
-			<form asp-action="Create" asp-controller="villanumber" method="post">
+			<form asp-action="Create" asp-controller="villanumbers" method="post">
 				<div class="form-floating m-2">
-					<select class="form-select" asp-items="@ViewData["SelectListItems"] as IEnumerable<SelectListItem>">
+					<select class="form-select" asp-items="@ViewData["SelectListItems"] as IEnumerable<SelectListItem>" asp-for="Villa_id">
 						<option selected disabled>Select Villa Name</option>
 					</select>
 					<label asp-for="Villa_id"></label>
@@ -21,9 +21,9 @@
 				</div>
 
 				<div class="form-floating m-2">
-					<input type="text" asp-for="Vill_Number" class="form-control" placeholder="" />
-					<label asp-for="Vill_Number"></label>
-					<span class="text-danger" asp-validation-for="Vill_Number"></span>
+					<input type="text" asp-for="Villa_Number" class="form-control" placeholder="" />
+					<label asp-for="Villa_Number"></label>
+					<span class="text-danger" asp-validation-for="Villa_Number"></span>
 				</div>
 
 				<div class="form-floating m-2">
