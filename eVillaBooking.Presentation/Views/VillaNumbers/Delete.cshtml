@@ -1,0 +1,49 @@
+﻿@model VillaNumber
+
+
+<div class="row">
+	<div class="w-100 card">
+
+		<div class="card-header bg-danger bg-gradient text-center m-3">
+			<h2> Delete Villa Number</h2>
+		</div>
+
+
+		<div class="card-body">
+			<form asp-action="DeleteConfirm" asp-controller="villanumbers" method="post">
+				<div class="form-floating m-2">
+					<input asp-for="Villa_Number" hidden />
+					<select disabled class="form-select" asp-items="@ViewData["SelectListItems"] as IEnumerable<SelectListItem>" asp-for="Villa_id">
+						<option selected disabled>Select Villa Name</option>
+					</select>
+					<label asp-for="Villa_id"></label>
+					<span class="text-danger" asp-validation-for="Villa_id"></span>
+				</div>
+
+				<div class="form-floating m-2">
+					<input disabled type="text" asp-for="Villa_Number" class="form-control" placeholder="" />
+					<label asp-for="Villa_Number"></label>
+					<span class="text-danger" asp-validation-for="Villa_Number"></span>
+				</div>
+
+				<div class="form-floating m-2">
+					<input type="text" asp-for="SpecialDetails" class="form-control" placeholder="" />
+					<label asp-for="SpecialDetails"></label>
+					<span class="text-danger" asp-validation-for="SpecialDetails"></span>
+				</div>
+
+
+				<div class="text-center">
+
+					<input class="btn btn-danger" type="submit" value="Delete"/>
+					<a asp-action="index" asp-controller="villanumber" class="btn btn-danger">Cancel</a>
+				</div>
+
+			</form>
+
+		</div>
+
+	</div>
+
+</div>
+

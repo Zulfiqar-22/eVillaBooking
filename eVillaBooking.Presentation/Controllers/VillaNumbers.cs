@@ -51,7 +51,11 @@ namespace eVillaBooking.Presentation.Controllers
      
      public IActionResult Edit(int id)
         {
-            var EditRecord = _db.VillaNumbers.Find(id);
+			var EditRecord = _db.VillaNumbers.Find(id);
+
+			var SelectListItems = _db.villa.Select(v => new SelectListItem { Value = v.Id.ToString(), Text = v.Name }).ToList();
+			ViewData["SelectListItems"] = SelectListItems;
+
             
             return View(EditRecord);
 
@@ -72,9 +76,29 @@ namespace eVillaBooking.Presentation.Controllers
             var SelectListItems=_db.villa.Select(v=> new SelectListItem { Value=v.Id.ToString(), Text= v.Name}).ToList();
             ViewData["SelectListItems"]= SelectListItems;
 
-            return View(villaNumber);
+            return RedirectToAction(nameof(Index));
         }
-
+        public IActionResult Delete(int id)
+        {
+            var villanumber = _db.VillaNumbers.FirstOrDefault(vn => vn.Villa_Number == id);
+            if(villanumber is null)
+            {
+                return NotFound();
+            }
+            //var DeleteRecord = _db.VillaNumbers.Find(id);
+            var SelectListItems = _db.villa.Select(vn => new SelectListItem { Value = vn.Id.ToString(), Text = vn.Name });
+            ViewData["SelectListItems"] = SelectListItems;
+            return View(villanumber);
+        }
+        [HttpPost]
+        public IActionResult DeleteConfirm(int villa_number)
+        {
+            var DeleteRecord = _db.VillaNumbers.FirstOrDefault(vn => vn.Villa_Number == villa_number);
+            _db.VillaNumbers.Remove(DeleteRecord);
+            _db.SaveChanges();
+            TempData["ErorrMessage"] = "villa number Delete!";
+			return RedirectToAction(nameof(Index));
+        }
 
 
     }

@@ -12,8 +12,8 @@
 		<div class="card-body">
 			<form asp-action="Edit" asp-controller="villanumbers" method="post">
 				<div class="form-floating m-2">
-					<input type="hidden" asp-for="Villa_id"/>
-					<select class="form-select" asp-items="@ViewData["SelectListItems"] as IEnumerable<SelectListItem>" asp-for="Villa_id">
+					<input asp-for="Villa_id" hidden/>
+					<select disabled class="form-select" asp-items="@ViewData["SelectListItems"] as IEnumerable<SelectListItem>" asp-for="Villa_id">
 						<option selected disabled>Select Villa Name</option>
 					</select>
 					<label asp-for="Villa_id"></label>
