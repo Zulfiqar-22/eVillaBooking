@@ -19,6 +19,7 @@ namespace eVillaBooking.Presentation.Controllers
 			return View(_VillaRepository.GetAll());
 		}
 
+
 		public IActionResult Create()
 		{
 			return View();
@@ -35,7 +36,7 @@ namespace eVillaBooking.Presentation.Controllers
 				//_Db.villa.Add(villa);
 				_VillaRepository.Add(villa);
 				//_Db.SaveChanges();
-				_VillaRepository.Save(villa);
+				_VillaRepository.Save();
 				TempData["SuccessMassage"] = "Villa Add SuccessfUlly!";
 				return RedirectToAction(nameof(Index));
 			}
@@ -60,7 +61,7 @@ namespace eVillaBooking.Presentation.Controllers
 				//_Db.villa.Update(villa);
 				_VillaRepository.Update(villa);
 				//_Db.SaveChanges();
-				_VillaRepository.Save(villa);
+				_VillaRepository.Save();
                 TempData["SuccessMassage"] = "Villa Edit SuccessfUlly!";
                 return RedirectToAction(nameof(Index));
 			}
@@ -85,7 +86,7 @@ namespace eVillaBooking.Presentation.Controllers
 			var deleterecord=_VillaRepository.Get(vn=>vn.Id==id);
 			//_Db.villa.Remove(deleterecord);
 			_VillaRepository.Remove(deleterecord);
-			_VillaRepository.Save(deleterecord);
+			_VillaRepository.Save();
             TempData["SuccessMassage"] = "Villa Delete SuccessfUlly!";
             return RedirectToAction(nameof(Index));
 		}
