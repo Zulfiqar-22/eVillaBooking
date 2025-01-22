@@ -10,7 +10,6 @@ namespace eVillaBooking.Application.Common.Interfaces
 		
 		void Update(Villas villa);
 		
-		void Save();
 	}
 }
 	

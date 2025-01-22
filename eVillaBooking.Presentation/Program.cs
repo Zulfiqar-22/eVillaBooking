@@ -14,8 +14,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(opt =>
 	opt.UseSqlServer(Connectionstring);
 }
 );
-builder.Services.AddScoped<IVillaRepository, VillaRepository>();
-builder.Services.AddScoped<IVillaNumberRepository, VillaNumberRepository>();
+//builder.Services.AddScoped<IVillaRepository, VillaRepository>();
+//builder.Services.AddScoped<IVillaNumberRepository, VillaNumberRepository>();
+builder.Services.AddScoped<Iunitofwork, UnitofWork>();
 
 
 var app = builder.Build();
