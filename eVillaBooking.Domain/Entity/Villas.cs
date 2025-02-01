@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eVillaBooking.Domain.Entity
 {
@@ -14,6 +16,8 @@ namespace eVillaBooking.Domain.Entity
 		public int Sqft { get; set; }
 		public int Occupancy { get; set; }
 		public string? ImageUrl { get; set; }
+		[NotMapped]
+		public IFormFile? Image { get; set; }
 		public DateTime? CreatedDate { get; set; }
 		public DateTime? UpdatedDate { get; set; }
 	}

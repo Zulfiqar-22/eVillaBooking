@@ -11,8 +11,12 @@
 
 
 		<div class="card-body">
-			<form asp-action="Edit" asp-controller="villa" method="post">
-				<div class="form-floating m-2">
+			<form asp-action="Edit" asp-controller="villa" method="post" enctype="multipart/form-data">
+				<input type="hidden" asp-for="Id"/>
+
+				<div class="row">
+					<div class="col-md-9">
+						<div class="form-floating m-2">
 					<input type="text" asp-for="Name" class="form-control" placeholder="" />
 					<label asp-for="Name"></label>
 					<span class="text-danger" asp-validation-for="Name"></span>
@@ -42,12 +46,27 @@
 					<span class="text-danger" asp-validation-for="Occupancy"></span>
 				</div>
 
+				<div class="form-floating m-2">
+					<input type="hidden" asp-for="ImageUrl" />
+					<input type="file" asp-for="Image" class="form-control" placeholder="" />
+					<label asp-for="ImageUrl"></label>
+					<span class="text-danger" asp-validation-for="ImageUrl"></span>
+				</div>
+
+
 				<div class="text-center">
 
 					<input type="submit" value="save" class="btn btn-success" />
 					<a asp-action="index" asp-controller="villa" class="btn btn-danger">Cancel</a>
 				</div>
 
+					</div>
+					<div class="col-md-3">
+						<img src="@Model.ImageUrl" width="100%" style="border-radius:5px; border:1px solid grey"/>
+
+					</div>
+
+				</div>
 			</form>
 
 		</div>

@@ -12,37 +12,55 @@
 
 
 		<div class="card-body">
-			<form>
-				<div class="form-floating m-2">
-					<input disabled type="text" asp-for="Name" class="form-control" placeholder="" />
-					<label asp-for="Name"></label>
-					<span class="text-danger" asp-validation-for="Name"></span>
+			<form asp-action="DeleteConfirm" asp-controller="villa" enctype="multipart/form-data">
+				<input type="hidden" asp-for="Id" />
+				<input type="hidden" asp-for="ImageUrl"/>
+
+				<div class="row">
+					<div class="col-md-9">
+						<div class="form-floating m-2">
+							<input disabled type="text" asp-for="Name" class="form-control" placeholder="" />
+							<label asp-for="Name"></label>
+							<span class="text-danger" asp-validation-for="Name"></span>
+						</div>
+
+						<div class="form-floating m-2">
+							<input disabled type="text" asp-for="Description" class="form-control" placeholder="" />
+							<label asp-for="Description"></label>
+							<span class="text-danger" asp-validation-for="Description"></span>
+						</div>
+
+						<div class="form-floating m-2">
+							<input disabled type="text" asp-for="Price" class="form-control" placeholder="" />
+							<label asp-for="Price"></label>
+							<span class="text-danger" asp-validation-for="Price"></span>
+						</div>
+
+						<div class="form-floating m-2">
+							<input disabled type="text" asp-for="Sqft" class="form-control" placeholder="" />
+							<label asp-for="Sqft"></label>
+							<span class="text-danger" asp-validation-for="Sqft"></span>
+						</div>
+
+						<div class="form-floating m-2">
+							<input disabled type="text" asp-for="Occupancy" class="form-control" placeholder="" />
+							<label asp-for="Occupancy"></label>
+							<span class="text-danger" asp-validation-for="Occupancy"></span>
+						</div>
+
+
+
+					</div>
+					<div class="col-md-3">
+						<img src="@Model.ImageUrl" class="img-fluid" alt="Image Not Found"/>
+					</div>
+
+
+
 				</div>
 
-				<div class="form-floating m-2">
-					<input disabled type="text" asp-for="Description" class="form-control" placeholder="" />
-					<label asp-for="Description"></label>
-					<span class="text-danger" asp-validation-for="Description"></span>
-				</div>
 
-				<div class="form-floating m-2">
-					<input disabled type="text" asp-for="Price" class="form-control" placeholder="" />
-					<label asp-for="Price"></label>
-					<span class="text-danger" asp-validation-for="Price"></span>
-				</div>
-
-				<div class="form-floating m-2">
-					<input disabled type="text" asp-for="Sqft" class="form-control" placeholder="" />
-					<label asp-for="Sqft"></label>
-					<span class="text-danger" asp-validation-for="Sqft"></span>
-				</div>
-
-				<div class="form-floating m-2">
-					<input disabled type="text" asp-for="Occupancy" class="form-control" placeholder="" />
-					<label asp-for="Occupancy"></label>
-					<span class="text-danger" asp-validation-for="Occupancy"></span>
-				</div>
-
+				
 				<div class="text-center">
 
 					<a class="btn btn-danger" asp-action="DeleteConfirm" asp-controller="villa" asp-route-id="@Model.Id">Delete</a>
