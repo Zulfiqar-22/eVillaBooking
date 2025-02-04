@@ -10,6 +10,8 @@ namespace eVillaBooking.Infrastructure.Repositroy
 
         public IVillaNumberRepository villaNumberRepositoryUOW { get; private set; }
 
+        public IAmenityRepositroy AmenityRepositroyUOW { get; private set; }
+
         public void Save()
         { _Db.SaveChanges(); }
 
@@ -19,6 +21,7 @@ namespace eVillaBooking.Infrastructure.Repositroy
             _Db = Db;
             this.villaRepositoryUOW =new VillaRepository (_Db);
             this.villaNumberRepositoryUOW =new VillaNumberRepository (_Db);
+            this.AmenityRepositroyUOW=new AmenityRepositroy (_Db);
 
         }
       

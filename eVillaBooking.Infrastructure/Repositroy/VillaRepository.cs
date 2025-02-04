@@ -21,10 +21,6 @@ namespace eVillaBooking.Infrastructure.Repositroy
             _Db.villa.Update(villas);
         }
 
-        public void Save()
-            
-        {
-            _Db.SaveChanges();
-        }
+        
 	}
 }

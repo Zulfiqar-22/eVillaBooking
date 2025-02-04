@@ -13,10 +13,7 @@ namespace eVillaBooking.Infrastructure.Repositroy
             _Db = Db;
         }
 
-        public void Save()
-        {
-            _Db.SaveChanges();
-        }
+        
         public void Update(VillaNumber villaNumber)
         {
             _Db.Update(villaNumber);
