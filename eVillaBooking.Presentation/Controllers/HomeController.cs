@@ -1,4 +1,6 @@
+using eVillaBooking.Application.Common.Interfaces;
 using eVillaBooking.Presentation.Models;
+using eVillaBooking.Presentation.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,16 +8,22 @@ namespace eVillaBooking.Presentation.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly ILogger<HomeController> _logger;
+		private readonly Iunitofwork _unitofwork;
 
-		public HomeController(ILogger<HomeController> logger)
+		public HomeController(Iunitofwork unitofwork)
 		{
-			_logger = logger;
+		 _unitofwork = unitofwork;	
 		}
 
 		public IActionResult Index()
 		{
-			return View();
+			HomeVM homeVM = new HomeVM()
+			{
+				VillaList = _unitofwork.villaRepositoryUOW.GetAll(Includeproperty: "AmenitiesList"),
+				Night = 1,
+				CheckInDate = DateOnly.FromDateTime(DateTime.Now)
+			};
+			return View(homeVM);
 		}
 
 		public IActionResult Privacy()
