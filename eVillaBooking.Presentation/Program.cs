@@ -1,6 +1,8 @@
 using eVillaBooking.Application.Common.Interfaces;
+using eVillaBooking.Domain.Entity;
 using eVillaBooking.Infrastructure.Data;
 using eVillaBooking.Infrastructure.Repositroy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +18,21 @@ builder.Services.AddDbContext<ApplicationDbContext>(opt =>
 );
 //builder.Services.AddScoped<IVillaRepository, VillaRepository>();
 //builder.Services.AddScoped<IVillaNumberRepository, VillaNumberRepository>();
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+				.AddDefaultTokenProviders();
+
+//builder.Services.Configure<IdentityOptions>(opt =>
+//{
+//	opt.Password.RequiredLength = 14;
+//});
+
+//builder.Services.ConfigureApplicationCookie(opt=>
+//{
+//	opt.
+//})
+
+
 builder.Services.AddScoped<Iunitofwork, UnitofWork>();
 
 
