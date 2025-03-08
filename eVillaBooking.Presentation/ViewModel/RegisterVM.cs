@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace eVillaBooking.Presentation.ViewModel
@@ -9,7 +11,7 @@ namespace eVillaBooking.Presentation.ViewModel
         public string Email {  get; set; }
 
         [Required]
-        [DataType(DataType.Password)]
+        [DataType(DataType.Password)]   
         public string Password { get; set; }
 
         [Required,DataType(DataType.Password)]
@@ -25,7 +27,9 @@ namespace eVillaBooking.Presentation.ViewModel
         public string? PhoneNumber { get; set; }
 
         public string? RedirectURL { get; set; }
+        [ValidateNever]
+        public IEnumerable<SelectListItem> RoleList { get;set; }
 
-
+        public string Role { get; set; }
     }
 }

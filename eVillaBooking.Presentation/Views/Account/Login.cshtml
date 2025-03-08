@@ -14,15 +14,16 @@
                 <div class="col-md-12">
                     <section>
                         <form method="post">
-                            <div asp-validation-summary="ModelOnly"></div>
+                            <input asp-for="RedirectURL" type="hidden" />
+                            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" aria-required="true" />
+                                <input asp-for="Email" class="form-control" aria-required="true" />
                                 <label class="form-label">Email</label>
                                 <span asp-validation-for="Email"></span>
                                 
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" aria-required="true" />
+                                <input asp-for="Password" class="form-control" aria-required="true" />
                                 <label class="form-label">Password</label>
                                 <span asp-validation-for="Password"></span>
                             </div>
@@ -41,8 +42,9 @@
                                     <a>Forgot your password?</a>
                                 </p>
                                 <p>
-                                    <a>Register as a new user</a>
+                                    <a asp-action="register" asp-controller="account" asp-route-returnUrl="@Model.RedirectURL">Register as a new user</a>
                                 </p>
+
                             </div>
                         </form>
                     </section>
@@ -53,6 +55,6 @@
     </div>
 </div>
 
-@section Scripts{
+@section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

@@ -22,6 +22,17 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
 				.AddDefaultTokenProviders();
 
+//builder.Services.Configure<IdentityOptions>(opt =>
+//{
+//	opt.Password.RequiredLength = 14;
+//});
+
+//builder.Services.ConfigureApplicationCookie(opt=>
+//{
+//	opt.
+//})
+
+
 builder.Services.AddScoped<Iunitofwork, UnitofWork>();
 
 
