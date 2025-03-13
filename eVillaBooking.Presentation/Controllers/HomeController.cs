@@ -1,4 +1,5 @@
 using eVillaBooking.Application.Common.Interfaces;
+using eVillaBooking.Domain.Entity;
 using eVillaBooking.Presentation.Models;
 using eVillaBooking.Presentation.ViewModel;
 using Microsoft.AspNetCore.Mvc;
@@ -25,8 +26,28 @@ namespace eVillaBooking.Presentation.Controllers
 			};
 			return View(homeVM);
 		}
+		[HttpPost]
+        public IActionResult GetVillaByDate(int night,DateOnly checkInDate)
+        {
+			var villaList = _unitofwork.villaRepositoryUOW.GetAll(Includeproperty: "AmenitiesList");
+			foreach (Villas villa in villaList)
+			{
+				if(villa.Id%2==0)
+				{
+					villa.IsAvaliable = false;
+				}
+			}
+            var homeVM = new HomeVM()
+            {
+                Night = 1,
+                CheckInDate = checkInDate,
+				VillaList= villaList
+            };
+            return PartialView("_VillaList",homeVM);
+        }
 
-		public IActionResult Privacy()
+
+        public IActionResult Privacy()
 		{
 			return View();
 		}
