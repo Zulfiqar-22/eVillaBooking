@@ -31,6 +31,8 @@
                 <div class="form-group">
                     <label>Check In Date</label>
                     <input type="date" asp-for="CheckInDate" class="form-control" />
+
+
                 </div>
             </div>
 
@@ -67,6 +69,7 @@
 @section Scripts{
     <script>
         function fnLoadVillaList(){
+            $('.custom-spinner').show();
             var objData = {
                 night: $('#Night').val(),
                 checkInDate :$('#CheckInDate').val()
@@ -80,6 +83,8 @@
 
                 success: function (pertialView) {
                     $('#VillasList').html(pertialView);
+                    $('.custom-spinner').hide();
+                        
                 },
                 failure: function (respose) {
                     alert(respose.resposeText);
@@ -89,5 +94,15 @@
                 }
             });
         }
+    </script>
+   
+    <script>
+        $(document).ready(function () {
+            $("#CheckInDate").datepicker({
+                dateFormat: 'dd-mm-yy', // اپنی فارمیٹ کے مطابق سیٹ کریں
+                minDate: 0// آج سے پہلے کی تاریخوں کو Disable کرے گا
+            });
+        });
+
     </script>
 }

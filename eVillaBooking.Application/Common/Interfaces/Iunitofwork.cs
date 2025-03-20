@@ -8,6 +8,10 @@
 
         public IAmenityRepositroy AmenityRepositroyUOW { get; }
 
+        public IBookingRepositroy BookingRepositroyUow { get; }
+
+        public IApplicationUser ApplicationUserUOW { get; }
+
         public void Save();
 
     }

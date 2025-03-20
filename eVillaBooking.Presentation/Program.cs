@@ -4,6 +4,7 @@ using eVillaBooking.Infrastructure.Data;
 using eVillaBooking.Infrastructure.Repositroy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +38,7 @@ builder.Services.AddScoped<Iunitofwork, UnitofWork>();
 
 
 var app = builder.Build();
+StripeConfiguration.ApiKey = builder.Configuration.GetValue<string>("Stripe:Secretkey");
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
