@@ -16,10 +16,13 @@
                 </p>
                 <p class="h5 text-white">Villa Amenities</p>
                 <ul>
-                    @foreach (var villaAmenity in villa.AmenitiesList)
+                    @if(villa.AmenitiesList is not null && villa.AmenitiesList.Count>0){
+                    @foreach (var villaAmenity in 
+                    villa.AmenitiesList)
                     {
                         <li>@villaAmenity.Name</li>
 
+                    }
                     }
 
                 </ul>

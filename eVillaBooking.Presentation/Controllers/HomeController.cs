@@ -39,7 +39,7 @@ namespace eVillaBooking.Presentation.Controllers
 			}
             var homeVM = new HomeVM()
             {
-                Night = 1,
+                Night = night,
                 CheckInDate = checkInDate,
 				VillaList= villaList
             };
