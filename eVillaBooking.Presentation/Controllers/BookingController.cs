@@ -22,6 +22,11 @@ namespace eVillaBooking.Presentation.Controllers
             
         }
         [Authorize]
+        public IActionResult Index()
+        {
+            return View();
+        }
+        [Authorize]
         public IActionResult FinalizeBooking(DateOnly checkInDate, int nights,int villaId)
         {     
             var claimIdentity=(ClaimsIdentity)User.Identity!;
@@ -118,6 +123,32 @@ namespace eVillaBooking.Presentation.Controllers
             
             return View(bookingId);
         }
+        #region APIs
+        [HttpGet,Authorize]
+        public IActionResult GetAllDetails()
+        {
+            IEnumerable<Booking> bookingobj=Enumerable.Empty<Booking>();
+            if (User.IsInRole(StaticDetails.Role_Admin))
+               { bookingobj = _unitofwork.BookingRepositroyUow.GetAll(Includeproperty: "User,Villas");
+            }
+            else
+            {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                bookingobj = _unitofwork.BookingRepositroyUow.GetAll(b => b.UserId == userId, Includeproperty: "User,Villas");
+            }
+        
+         return Json(new {data=bookingobj});
+        }
+
+        #endregion
+
+        public IActionResult Details(int id)
+        {
+            var BookingFromDb = _unitofwork.BookingRepositroyUow.Get(b => b.Id == id,Includeproperty: "User,Villas.AmenitiesList");
+            return View(BookingFromDb);
+        }
+
+
     }
 
 }
